@@ -1,0 +1,8 @@
+# Task 1 - Quick Note Application
+
+This project is a simple full-stack note-taking application built using Flask and SQLite.
+
+## Features
+- Add notes
+- Save notes in database
+- Display saved notes
