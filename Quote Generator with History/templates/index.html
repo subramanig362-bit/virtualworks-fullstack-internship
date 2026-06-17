@@ -3,7 +3,8 @@
 <head>
     <title>Quote Generator</title>
     <link rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}">
+href="{{ url_for('static', filename='style.css') }}">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4149/4149673.png">
 </head>
 <body>
 
@@ -21,21 +22,25 @@
 
     {% for quote in history %}
 
-    <div class="card">
+    {% for quote in history %}
 
-        <p class="quote">
-            "{{ quote[0] }}"
-        </p>
+<div class="card">
 
-        <p class="author">
-            — {{ quote[1] }}
-        </p>
+    <p class="quote">
+        ❝ {{ quote[0] }} ❞
+    </p>
 
-        <small>
-            {{ quote[2] }}
-        </small>
+    <p class="author">
+        — {{ quote[1] }}
+    </p>
 
-    </div>
+    <small>
+        🕒 {{ quote[2] }}
+    </small>
+
+</div>
+
+{% endfor %}
 
     {% endfor %}
 
