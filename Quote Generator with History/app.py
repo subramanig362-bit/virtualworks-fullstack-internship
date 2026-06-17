@@ -46,13 +46,13 @@ def home():
 def generate():
 
     response = requests.get(
-        "https://api.quotable.io/random"
+    "https://zenquotes.io/api/random"
     )
 
     data = response.json()
 
-    quote = data["content"]
-    author = data["author"]
+    quote = data[0]["q"]
+    author = data[0]["a"]
 
     created_at = datetime.now().strftime(
         "%d-%m-%Y %I:%M %p"
