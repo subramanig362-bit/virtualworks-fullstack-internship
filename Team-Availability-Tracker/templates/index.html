@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Availability Tracker</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar glass">
+
+        <h2>👥 TeamTracker</h2>
+
+        <ul>
+            <li>📊 Dashboard</li>
+            <li>👨‍💼 Team Members</li>
+            <li>📈 Analytics</li>
+            <li>⚙️ Settings</li>
+        </ul>
+
+    </aside>
+
+    <main class="main">
+
+        <h1>Team Availability Tracker</h1>
+
+        <p class="subtitle">
+            Monitor and manage team availability in real time
+        </p>
+
+        <!-- Stats cards -->
+
+        <div class="stats">
+
+            <div class="stat-card glass">
+                <h2>{{ members|length }}</h2>
+                <p>Total Members</p>
+            </div>
+
+            <div class="stat-card glass">
+                <h2>{{ available }}</h2>
+                <p>Available</p>
+            </div>
+
+            <div class="stat-card glass">
+                <h2>{{ busy }}</h2>
+                <p>Busy</p>
+            </div>
+
+        </div>
+
+        <!-- Team cards -->
+
+        {% for member in members %}
+
+        <div class="team-card glass">
+
+            <img class="avatar"
+            src="https://api.dicebear.com/9.x/adventurer/svg?seed={{ member[1] }}">
+
+            <div class="info">
+                <h3>{{ member[1] }}</h3>
+                <p>{{ member[2] }}</p>
+            </div>
+
+            {% if member[3] == "Available" %}
+            <span class="available">AVAILABLE</span>
+            {% else %}
+            <span class="busy">BUSY</span>
+            {% endif %}
+
+            <a href="/toggle/{{ member[0] }}">
+                <button>Toggle Status</button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </main>
+
+</div>
+
+</body>
+</html>
